@@ -26,8 +26,11 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
-
-
+%TODO: Vectorize this
+for i = 1:K
+    ex_in_cluster = find(idx == i);
+    centroids(i, :) = sum(X(ex_in_cluster, :), 1) ./ numel(ex_in_cluster);
+end
 
 
 

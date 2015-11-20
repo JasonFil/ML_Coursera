@@ -14,7 +14,7 @@ function [centroids, idx] = runkMeans(X, initial_centroids, ...
 %
 
 % Set default value for plot progress
-if ~exist('plot_progress', 'var') || isempty(plot_progress)
+if ~exist('plot_progress', 'var') || isempty(plot_progress) % So, probably, you can put anything you want as a last argument and the function will still plot the progress.
     plot_progress = false;
 end
 
@@ -31,7 +31,7 @@ centroids = initial_centroids;
 previous_centroids = centroids;
 idx = zeros(m, 1);
 
-% Run K-Means
+% Run K-Means. This is the "main course" of the file.
 for i=1:max_iters
     
     % Output progress

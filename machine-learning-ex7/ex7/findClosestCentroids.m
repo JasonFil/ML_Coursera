@@ -25,11 +25,9 @@ idx = zeros(size(X,1), 1);
 m = size(X,1);
 Xnorms = arrayfun(@(idx) norm(X(idx,:), 2).^2, 1:m)'; % transpose
 Cnorms = arrayfun(@(idx) norm(centroids(idx,:), 2).^2, 1:K); % don't transpose
-%assert(size(Xnorms) == [m, 1], 'Wrong dimensions for Xnorms matrix.');
-%assert(size(Cnorms) == [1, K], 'Wrong dimensions for Cnorms matrix.');
 Xnorms = repmat(Xnorms, 1, K);
 Cnorms = repmat(Cnorms, m, 1);
-D = Xnorms - 2*X*centroids' + Cnorms; % negative values???
+D = Xnorms - 2*X*centroids' + Cnorms; 
 
 % Answer is row-wise minimum of D.
 [~, idx] = min(D, [], 2);
